@@ -1,0 +1,25 @@
+{%extends "main/base.html" %} 
+{% block content%}
+    {% for scheme in schemes%}
+        <article class="media content-section">
+            
+            <div class="media-body">
+            <div class="article-metadata">
+                
+                <small class="text-muted">{{ scheme.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2>
+                <a class="article-title" href="{% url 'scheme-detail' scheme.id %}"
+                >{{ scheme.title }}</a></h2><small class="text-muted">&uarr; Click on title to read more.</small>
+                
+            
+            <p class="article-content">{{ scheme.content| slice:300 | safe }}</p>
+            <a href="{% url 'scheme-detail' scheme.id %}"></a>
+            
+            
+            </div>
+
+        </article>
+
+    {% endfor %} 
+{% endblock%}

@@ -1,0 +1,25 @@
+{% extends "main/base.html" %} 
+{% block content%}
+    {% if searched %}
+        <h1>You Searched For -> {{ searched }}</h1>
+        <br>
+        <h3 style="text-decoration: underline;">Hospitals</h3>
+        {% for post in posts %}
+            -> <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
+            <br>
+            <br>
+        {% endfor %}
+        <br>
+        <h3 style="text-decoration: underline;">Schemes</h3>
+        {% for scheme in schemes %}
+            -> <a href="{% url 'scheme-detail' scheme.id %}">{{ scheme }}</a>
+            <br>
+            <br>
+        {% endfor %}
+        
+    {% else %}
+        <h1>You forgot to enter value into search bar!! </h1>
+        <script>for(var x=0;x<=25;x++){document.write("<br>")}</script>
+    {% endif %}
+{% endblock%}
+
