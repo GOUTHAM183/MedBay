@@ -1,5 +1,40 @@
-{%extends "main/base.html" %} {% block content%} {% for post in posts%}
-<article class="media content-section">
+{%extends "main/base.html" %} {% block content%}
+   <!--   <form method="post" action="{% url 'location' %}">
+        {% csrf_token %}
+        <input type="hidden"  name="loca">
+        <button class="btn btn-outline-secondary" id="loc" type="submit" onclick="loc()" >Detect your location</button>
+      </form>
+
+      <form class="d-flex" method=POST action="{% url 'search' %}">
+        {% csrf_token %}
+        
+        <input class="form-control me-2"  value="{{result}}" type="search" placeholder="Search" aria-label="Search" name="searched">
+        <div  class="button-search">
+          <button class="btn btn-outline-secondary" id="loc" type="submit" >Search</button>
+        </div>
+      </form>
+      <button class="btn btn-outline-secondary"  onclick="getres()" >Detect</button>
+      -->
+      <h3>Search Hospitals in your city!!</h3>
+      <br>
+      <button class="btn btn" id="loc" onclick="loc(),myFunction()" style="background-color: #212121 ; color: #fff;">Detect your location</button>
+      <br>
+      <br>
+      
+      
+      <form class="d-flex" method=POST action="{% url 'search' %}">
+        {% csrf_token %}
+        
+        <input class="form-control me-2" id="demo" type="search" placeholder="Search" aria-label="Search" name="searched">
+        <div  class="button-search">
+          <button class="btn btn" id="loc" type="submit" style="background-color: #212121 ; color: #fff; border: 1px solid #dddddd;">Search</button>
+        </div>
+      </form>
+
+      <br>
+      <br> 
+{% for post in posts%}
+<article class="media content-section" style="background: #C7FFD8;">
   
   <div class="media-body">
     <div class="article-metadata">
@@ -8,16 +43,69 @@
         >{{ post.title }}</a
       >
     </h2> 
+    {% if post.image %}
+      <img src="{{ post.image.url }}" height="50%" width="50%" > 
+    {% endif %}
+    
 
     </div>
     
     <p class="article-content">{{ post.content| slice:400 | safe }}</p>
-    <a href="{% url 'post-detail' post.id %}">Read More...</a>
+    <button class="btn btn-outline-secondary"><a href="{% url 'post-detail' post.id %}">Read More...</a></button>
     
    
   </div>
  
 </article>
+<script>   
+  const button = document.getElementById("loc")  
+  let result;
+  function loc(){
+      if(navigator.geolocation){
+          button.innerText = "Allow to detect location";
+          navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      }else{
+          button.innerText = "Your browser not support";
+      }
+      
+  };
+  
+  function onSuccess(position){
+      button.innerText = "Detecting your location...";
+      let {latitude, longitude} = position.coords;
+      fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=282804cd047043918b0608c5b94cd956`)
+      .then(response => response.json()).then(response =>{
+          let allDetails = response.results[0].components;
+          console.table(allDetails);
+          let {city} = allDetails;
+           result= `${city}`;
+           return result;
+           
+      }).catch(()=>{
+          button.innerText = "Something went wrong";
+      });
+  }
+  
+  function onError(error){
+      if(error.code == 1){
+          button.innerText = "You denied the request";
+      }else if(error.code == 2){
+          button.innerText = "Location is unavailable";
+      }else{
+          button.innerText = "Something went wrong";
+      }
+      button.setAttribute("disabled", "true");
+  }
+  
+  function myFunction() {
+  myVar = setTimeout(function getres(){
+    document.getElementById("demo").value = result;
+    
+  },11000);
+}
+  
+  
+  </script>
 
   {% endfor %} 
        

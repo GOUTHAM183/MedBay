@@ -3,9 +3,11 @@
     {% if searched %}
         <h1>You Searched For -> {{ searched }}</h1>
         <br>
+        
         <h3 style="text-decoration: underline;">Hospitals</h3>
+        
         {% for post in posts %}
-            -> <a href="{% url 'post-detail' post.id %}">{{ post }}</a>
+            -> <button class="btn btn-info"><a href="{% url 'post-detail' post.id %}" style="color: black;">{{ post }}</a></button>
             <br>
             <br>
         {% endfor %}

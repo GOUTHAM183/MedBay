@@ -1,5 +1,8 @@
 body {
-    background: #fafafa;
+    background: linear-gradient(110deg,#F9B208 20%,
+    #F7FD04 50%,
+    #212121 30%);
+    ;
     color: #333333;
     margin-top: 5rem;
   }
@@ -18,7 +21,17 @@ body {
   ul {
     margin: 0;
   }
-  
+  .row {
+    display: flex;
+    
+    flex-wrap: wrap;
+    margin-right: -240px;
+    margin-left:100px;
+}
+
+nav{
+  background: #000000;
+}
   
   .bg-steel {
     background-color: #5f788a;
@@ -37,13 +50,14 @@ body {
   }
   
   .content-section {
-    background: #ffffff;
+    background: #98DED9;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
+    
     border-radius: 3px;
     margin-bottom: 20px;
+    
   }
-  
+ 
   .article-title {
     color: #444444;
   }

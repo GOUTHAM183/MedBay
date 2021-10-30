@@ -1,0 +1,29 @@
+{% extends "main/base.html" %} 
+{% block content%}
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" type="text/css">
+    <style>
+      
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
+    
+ 
+    <h2>Locate the hospitals using the Map</h2>
+    <div id="map" class="map" style="height: 400px; width: 100%;"></div>
+    <script type="text/javascript">
+        
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+        
+          center: ol.proj.fromLonLat([77.5, 13]),
+          zoom: 10
+        })
+      });
+    </script>
+{% endblock%}

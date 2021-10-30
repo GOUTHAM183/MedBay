@@ -10,6 +10,14 @@ from django.views.generic import (
 from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 
+def landing(request):
+    context = {}
+    return render(request, "main/landing.html", context)
+
+def map(request):
+    context = {}
+    return render(request, "main/map.html", context)
+
 def home(request):
     context = {"posts": Post.objects.all()}
     return render(request, "main/home.html", context)
@@ -65,4 +73,7 @@ def speech_to_text(request):
 
     return render(request,'main/base.html',{'data':data})
     
- 
+def location(request):
+    result = request.POST.get('loca')
+
+    return render(request,'main/home.html',{'result':result})
