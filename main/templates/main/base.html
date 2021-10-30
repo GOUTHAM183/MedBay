@@ -80,7 +80,7 @@
             
             <input class="form-control me-2" value="{{data}}" type="search" placeholder="Search" aria-label="Search" name="searched">
             <div  class="button-search">
-              <button class="btn btn-outline-secondary" type="submit" >Search</button>
+              <button class="btn btn-outline-secondary" type="submit" style="color: #fff;">Search</button>
             </div>
           </form>
           
@@ -100,33 +100,7 @@
               {%endfor %}
             {%endif%}
             
-<!--
-<form method="post" action="{% url 'location' %}">
-            {% csrf_token %}
-            <input type="hidden"  name="loca">
-            <button class="btn btn-outline-secondary" id="loc" type="submit" >Detect your location</button>
-          </form>
 
-
-            <form method="post" action="{% url 'location' %}">
-              {% csrf_token %}
-              <input type="hidden"  name="loca">
-              <button class="btn btn-outline-secondary" id="loc" type="submit" >Detect your location</button>
-            </form>
-  
-            <form class="d-flex" method=POST action="{% url 'search' %}">
-              {% csrf_token %}
-              
-              <input class="form-control me-2"  value="{{result}}" type="search" placeholder="Search" aria-label="Search" name="searched">
-              <div  class="button-search">
-                <button class="btn btn-outline-secondary" id="loc" type="submit" >Search</button>
-              </div>
-            </form>
-            
-            
-            
-            
-            -->
             
             {% block content %}{% endblock %}
             

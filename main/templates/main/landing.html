@@ -22,33 +22,33 @@
       font-family: 'Montserrat', sans-serif;
       color: var(--black);
     }
-    .text {
-      margin: 0 auto;
-      height: 300px;
-    }
+  
     .text h1 {
       font-size: 72px;
       padding-left: 1%;
+      margin: 0;
     }
     .click{
       text-decoration: none;
       color: var(--black);
       font-size: 26px;
-      padding-left: 3%;
-    }
-    .click:hover {
+      margin-left: 3%;
       padding: 1% 2.3%;
       border: 3px solid var(--black);
+      background: none;
+    }
+    .click:hover {
+      padding-right: 6%;
     }
     .sub-text {
-      padding: 1% 2.5%;
+      padding: 5% 2.5% 3%;
       width: 700px;
       text-align: justify;
       text-justify: inter-word;
       line-height: 1.4;
     }
     .text p {
-      margin: 3% 30.5%;
+      margin: 12.5% 30.5% 0;
     }
     .text a {
       color: var(--black);
@@ -57,29 +57,23 @@
 </head>
 <body >
   <section class="text">
-    <h1>Welcome to MedBay!</h1>
+    <h1>Welcome to MedBay!<br><span style="font-size:18px ; padding-left: 28rem;">A commitment to the community</span></h1>
     <!-- <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h4> -->
     
       <div class="sub-text">
-        <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-        natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque
-        eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
-        Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-        porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-        Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
-        sem
-        quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit
-        id,
-        lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
-        Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis
-        magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</strong>
+        <strong>
+          <ul>
+            <li>Access to information about hospitals and their services, along with the doctors working there</li>
+            <li>View and know about government healthcare schemes</li>
+            <li>All of this information can be translated to any other regional language</li>
+            <li>Voice searching has been provided to ease the process</li>
+            <li>Find nearby medical services (based on geolocation)</li>
+          </ul>
+        </strong>
       
     </div>
     <br>
-    <a href='{% url "home" %}' class="click"><strong>Click here to know more--></strong></a>
+    <button class="click"><a href="{% url "home" %}" style="text-decoration: none;"><strong>Click here to know more--></strong></a></button>
     <p>Copyright Â© 2021 Access Denied </p>
   </section>
 </body>

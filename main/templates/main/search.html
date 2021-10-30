@@ -14,7 +14,7 @@
         <br>
         <h3 style="text-decoration: underline;">Schemes</h3>
         {% for scheme in schemes %}
-            -> <a href="{% url 'scheme-detail' scheme.id %}">{{ scheme }}</a>
+            -><button class="btn btn-info"> <a href="{% url 'scheme-detail' scheme.id %}" style="color: black;">{{ scheme }}</a></button>
             <br>
             <br>
         {% endfor %}
@@ -24,4 +24,5 @@
         <script>for(var x=0;x<=25;x++){document.write("<br>")}</script>
     {% endif %}
 {% endblock%}
+
 

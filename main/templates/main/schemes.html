@@ -1,7 +1,7 @@
 {%extends "main/base.html" %} 
 {% block content%}
     {% for scheme in schemes%}
-        <article class="media content-section">
+        <article class="media content-section" style="background: #FFF9B2; border-radius: 12px;">
             
             <div class="media-body">
             <div class="article-metadata">
@@ -11,8 +11,11 @@
             <h2>
                 <a class="article-title" href="{% url 'scheme-detail' scheme.id %}"
                 >{{ scheme.title }}</a></h2><small class="text-muted">&uarr; Click on title to read more.</small>
-                
-            
+            <div>
+            {% if scheme.image %}
+                <img src="{{ scheme.image.url }}" height="50%" width="50%" > 
+            {% endif %}
+            </div>  
             <p class="article-content">{{ scheme.content| slice:300 | safe }}</p>
             <a href="{% url 'scheme-detail' scheme.id %}"></a>
             
